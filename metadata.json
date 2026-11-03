@@ -1,0 +1,6 @@
+{
+  "name": "Hotel Ghunghat",
+  "description": "Hotel Ghunghat - Premium accommodation, multi-cuisine dining, banquet hall, and wedding lawn in Gandhinagar, Gujarat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

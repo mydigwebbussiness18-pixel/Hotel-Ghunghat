@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#0B1325"/>
+  <rect x="3" y="3" width="58" height="58" rx="13" stroke="#D4AF37" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Elegant Hotel Crest 'HG' -->
+  <path d="M22 18V46M42 18V46M22 32H42" stroke="#E6CA65" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32" cy="18" r="2.5" fill="#D4AF37"/>
+</svg>
