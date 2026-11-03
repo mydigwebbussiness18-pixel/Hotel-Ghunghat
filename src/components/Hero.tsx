@@ -119,10 +119,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
             <span className="font-semibold text-white">{HOTEL_INFO.rating} / {HOTEL_INFO.maxRating}</span>
             <span className="text-slate-400">·</span>
             <a
-              href={HOTEL_INFO.googleMapsUrl}
+              href={HOTEL_INFO.googleBusinessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#E6CA65] hover:underline"
+              className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
             >
               Google Business Profile
             </a>
@@ -133,14 +133,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
             <button
               type="button"
               onClick={() => onOpenBooking()}
-              className="px-6 py-3.5 text-sm font-semibold tracking-wide text-[#0B1325] bg-gradient-to-r from-[#D4AF37] via-[#E6CA65] to-[#C5A880] rounded hover:shadow-xl hover:shadow-[#D4AF37]/30 hover:brightness-105 transition-all whitespace-nowrap cursor-pointer"
+              className="btn-luxury-gold px-7 py-3.5 text-sm sm:text-base font-semibold rounded-xl cursor-pointer shadow-lg"
             >
               {t('hero_btn_book')}
             </button>
 
             <a
               href="#about"
-              className="px-6 py-3.5 text-sm font-medium tracking-wide text-white bg-white/10 hover:bg-white/15 border border-white/20 rounded backdrop-blur-sm transition-all flex items-center gap-2 whitespace-nowrap"
+              className="px-7 py-3.5 text-sm sm:text-base font-medium rounded-xl flex items-center gap-2 whitespace-nowrap cursor-pointer bg-red-600 text-white border border-red-600 shadow-lg transition-all duration-300 hover:bg-red-600 hover:text-[#0B1325] hover:border-red-600 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_-2px_rgba(220,38,38,0.45)] active:translate-y-0"
             >
               <span>{t('hero_btn_explore')}</span>
               <ChevronRight className="w-4 h-4" />
@@ -213,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           <div>
             <button
               type="submit"
-              className="w-full py-2.5 px-4 text-sm font-semibold tracking-wide text-[#0B1325] bg-gradient-to-r from-[#D4AF37] to-[#E6CA65] rounded-lg hover:brightness-105 active:scale-[0.99] transition-all whitespace-nowrap cursor-pointer"
+              className="btn-luxury-gold w-full py-3 px-4 text-sm font-semibold rounded-lg cursor-pointer"
             >
               {t('hero_check_availability')}
             </button>

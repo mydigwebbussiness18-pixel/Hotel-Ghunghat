@@ -49,16 +49,16 @@ export const Gallery: React.FC = () => {
 
         {/* Category Filter Tabs (Interactive segmented buttons, zero-pill discipline) */}
         <ScrollReveal direction="up" delay={100}>
-          <div className="flex items-center justify-center flex-wrap gap-2 mb-10">
+          <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-2.5 mb-10">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap ${
+                className={`px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap ${
                   activeCategory === cat.id
-                    ? 'bg-[#0B1325] text-white shadow-md'
-                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300'
+                    ? 'bg-[#0B1325] text-[#E6CA65] border border-[#E6CA65]/60 shadow-lg shadow-[#0B1325]/25 -translate-y-0.5 scale-[1.02]'
+                    : 'bg-white text-slate-700 hover:bg-[#0B1325] hover:text-[#E6CA65] hover:border-[#0B1325] border border-slate-200/90 shadow-2xs hover:-translate-y-0.5 hover:shadow-md'
                 }`}
               >
                 {t(cat.labelKey)}
@@ -126,7 +126,7 @@ export const Gallery: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-black/80 flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-[#0B1325]/85 text-white border border-white/25 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(230,202,101,0.4)] flex items-center justify-center transition-all duration-300 cursor-pointer"
               aria-label="Close Preview"
             >
               <X className="w-5 h-5" />

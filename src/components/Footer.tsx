@@ -39,26 +39,26 @@ export const Footer: React.FC = () => {
                 href={HOTEL_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#E6CA65] text-[#E6CA65] hover:text-[#0B1325] border border-white/15 hover:border-[#E6CA65] flex items-center justify-center hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(230,202,101,0.35)] transition-all duration-300 cursor-pointer"
                 aria-label="Instagram"
               >
-                <Instagram className="w-4 h-4 text-[#E6CA65]" />
+                <Instagram className="w-4 h-4" />
               </a>
               <a
                 href={HOTEL_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#E6CA65] text-[#E6CA65] hover:text-[#0B1325] border border-white/15 hover:border-[#E6CA65] flex items-center justify-center hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(230,202,101,0.35)] transition-all duration-300 cursor-pointer"
                 aria-label="Google Maps"
               >
-                <MapPin className="w-4 h-4 text-[#E6CA65]" />
+                <MapPin className="w-4 h-4" />
               </a>
               <a
                 href={`tel:${HOTEL_INFO.phoneClean}`}
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#E6CA65] text-[#E6CA65] hover:text-[#0B1325] border border-white/15 hover:border-[#E6CA65] flex items-center justify-center hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(230,202,101,0.35)] transition-all duration-300 cursor-pointer"
                 aria-label="Call Hotel"
               >
-                <Phone className="w-4 h-4 text-[#E6CA65]" />
+                <Phone className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -110,7 +110,7 @@ export const Footer: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsPrivacyOpen(true)}
-                  className="text-xs text-[#E6CA65] hover:underline flex items-center gap-1.5 cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#E6CA65] bg-white/5 hover:bg-[#E6CA65] hover:text-[#0B1325] border border-[#E6CA65]/30 hover:border-[#E6CA65] hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 flex items-center gap-1.5 cursor-pointer"
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>{t('footer_privacy')}</span>

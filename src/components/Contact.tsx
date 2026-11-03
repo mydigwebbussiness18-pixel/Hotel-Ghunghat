@@ -262,9 +262,9 @@ export const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 px-6 text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] via-[#E6CA65] to-[#C5A880] rounded-xl hover:brightness-105 active:scale-[0.99] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="btn-luxury-gold w-full py-3.5 px-6 text-sm font-semibold rounded-xl cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
                 >
-                  <Send className="w-4 h-4 text-[#0B1325]" />
+                  <Send className="w-4 h-4" />
                   <span>{isSubmitting ? t('form_submitting') : t('contact_btn_send')}</span>
                 </button>
               </form>
@@ -284,7 +284,7 @@ export const Contact: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsSuccess(false)}
-                  className="px-6 py-2.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+                  className="btn-luxury-navy px-6 py-2.5 text-xs font-semibold rounded-xl cursor-pointer"
                 >
                   Send Another Inquiry
                 </button>

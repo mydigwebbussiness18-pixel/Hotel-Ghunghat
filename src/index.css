@@ -58,5 +58,147 @@
   .animate-float-slow {
     animation: none !important;
   }
+  button, 
+  [role="button"],
+  a {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ========================================================
+   GLOBAL LUXURY BUTTON SYSTEM
+   - 280ms smooth transitions
+   - Inverted background & text colors on hover
+   - Elegant glowing shadows and subtle lift (-translate-y-0.5)
+   - High contrast and full keyboard focus accessibility
+   ======================================================== */
+
+button,
+[role="button"] {
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #0B1325, 0 0 0 4px #E6CA65;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Luxury Gold Button (Primary) */
+.btn-luxury-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  background: linear-gradient(135deg, #D4AF37 0%, #E6CA65 50%, #C5A880 100%);
+  color: #0B1325;
+  border: 1px solid rgba(230, 202, 101, 0.5);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.28);
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-gold:hover:not(:disabled) {
+  background: #0B1325;
+  color: #E6CA65;
+  border-color: #E6CA65;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -2px rgba(212, 175, 55, 0.45), 0 0 18px rgba(230, 202, 101, 0.3);
+}
+
+.btn-luxury-gold:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Luxury Navy Button (Secondary) */
+.btn-luxury-navy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  background: #0B1325;
+  color: #FAF8F5;
+  border: 1px solid rgba(197, 168, 128, 0.45);
+  box-shadow: 0 4px 14px rgba(11, 19, 37, 0.25);
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-navy:hover:not(:disabled) {
+  background: linear-gradient(135deg, #D4AF37 0%, #E6CA65 50%, #C5A880 100%);
+  color: #0B1325;
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -2px rgba(212, 175, 55, 0.4), 0 0 15px rgba(230, 202, 101, 0.25);
+}
+
+.btn-luxury-navy:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Luxury Glass / Translucent Outline Button */
+.btn-luxury-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-glass:hover:not(:disabled) {
+  background: #FFFFFF;
+  color: #0B1325;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -2px rgba(255, 255, 255, 0.35), 0 0 16px rgba(255, 255, 255, 0.2);
+}
+
+.btn-luxury-glass:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Luxury WhatsApp Button */
+.btn-luxury-whatsapp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  background: #25D366;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-whatsapp:hover:not(:disabled) {
+  background: #0B1325;
+  color: #25D366;
+  border-color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -2px rgba(37, 211, 102, 0.5), 0 0 18px rgba(37, 211, 102, 0.3);
+}
+
+.btn-luxury-whatsapp:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
 }
 

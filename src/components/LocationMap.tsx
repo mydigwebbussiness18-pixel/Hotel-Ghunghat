@@ -88,7 +88,7 @@ export const LocationMap: React.FC = () => {
                   href={HOTEL_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] to-[#E6CA65] rounded-xl hover:brightness-105 transition-all shadow-md cursor-pointer"
+                  className="btn-luxury-gold w-full py-3.5 px-4 text-sm font-semibold rounded-xl cursor-pointer flex items-center justify-center gap-2"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>{t('loc_btn_map')}</span>

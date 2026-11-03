@@ -103,9 +103,9 @@ export const PartyLawn: React.FC<PartyLawnProps> = ({ onOpenEventEnquiry }) => {
                   <button
                     type="button"
                     onClick={() => onOpenEventEnquiry('Outdoor Party Lawn')}
-                    className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] to-[#E6CA65] rounded-xl hover:brightness-105 transition-all shadow-lg shadow-[#D4AF37]/20 whitespace-nowrap cursor-pointer"
+                    className="btn-luxury-gold px-7 py-3.5 text-sm font-semibold rounded-xl whitespace-nowrap cursor-pointer"
                   >
-                    <Calendar className="w-4 h-4 text-[#0B1325]" />
+                    <Calendar className="w-4 h-4" />
                     <span>{t('lawn_btn_quote')}</span>
                   </button>
                 </div>

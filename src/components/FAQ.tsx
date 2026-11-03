@@ -203,7 +203,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
                 {searchQuery && (
                   <button
                     onClick={clearSearch}
-                    className="absolute right-3.5 p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors"
+                    className="absolute right-3.5 p-1 text-slate-400 hover:text-[#E6CA65] hover:bg-[#0B1325] rounded-full transition-all duration-200 cursor-pointer"
                     aria-label="Clear search"
                   >
                     <X className="w-4 h-4" />
@@ -222,10 +222,10 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
                     onClick={() => {
                       setSelectedCategory(cat.id);
                     }}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? 'bg-[#0B1325] text-white shadow-md shadow-[#0B1325]/20 scale-[1.02]'
-                        : 'bg-white/80 hover:bg-white text-slate-700 border border-slate-200/80 hover:border-[#C5A880]/50 shadow-2xs'
+                        ? 'bg-[#0B1325] text-[#E6CA65] border border-[#E6CA65]/60 shadow-lg shadow-[#0B1325]/25 -translate-y-0.5 scale-[1.02]'
+                        : 'bg-white text-slate-700 hover:bg-[#0B1325] hover:text-[#E6CA65] hover:border-[#0B1325] border border-slate-200/90 shadow-2xs hover:-translate-y-0.5 hover:shadow-md'
                     }`}
                   >
                     {t(cat.labelKey)}
@@ -245,7 +245,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href={`tel:${HOTEL_INFO.phoneClean}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0B1325] text-white text-xs font-semibold hover:bg-slate-800 transition-colors"
+                  className="btn-luxury-navy px-4 py-2.5 rounded-xl text-xs font-semibold"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#E6CA65]" />
                   <span>+91 98253 00161</span>
@@ -254,7 +254,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
                   href={`https://wa.me/${HOTEL_INFO.whatsappNumber}?text=Hello%20Hotel%20Ghunghat,%20I%20have%20an%20inquiry`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20ba59] transition-colors"
+                  className="btn-luxury-whatsapp px-4 py-2.5 rounded-xl text-xs font-semibold"
                 >
                   <MessageCircle className="w-3.5 h-3.5" />
                   <span>WhatsApp</span>
@@ -356,7 +356,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <a
                   href={`tel:${HOTEL_INFO.phoneClean}`}
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-all border border-white/20 hover:border-white/40 shadow-xs"
+                  className="btn-luxury-glass px-5 py-3 rounded-xl text-sm font-medium"
                 >
                   <Phone className="w-4 h-4 text-[#E6CA65]" />
                   <span>{t('faq_cta_call')}</span>
@@ -366,7 +366,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
                   href={`https://wa.me/${HOTEL_INFO.whatsappNumber}?text=Hello%20Hotel%20Ghunghat,%20I%20have%20an%20inquiry%20regarding%20stay/dining/events`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-medium text-sm transition-all shadow-md shadow-[#25D366]/20"
+                  className="btn-luxury-whatsapp px-5 py-3 rounded-xl text-sm font-semibold"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>{t('faq_cta_whatsapp')}</span>
@@ -375,7 +375,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking, onOpenEventEnquiry }) =
                 {onOpenBooking && (
                   <button
                     onClick={onOpenBooking}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#C5A880] to-[#E6CA65] hover:brightness-105 text-[#0B1325] font-semibold text-sm transition-all shadow-md shadow-[#C5A880]/30 cursor-pointer"
+                    className="btn-luxury-gold px-5 py-3 rounded-xl text-sm font-semibold cursor-pointer"
                   >
                     <CalendarCheck className="w-4 h-4" />
                     <span>{t('faq_cta_book')}</span>

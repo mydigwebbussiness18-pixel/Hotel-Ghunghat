@@ -117,15 +117,15 @@ export const Restaurant: React.FC = () => {
                     href={createGeneralWhatsAppUrl('Restaurant & Dining Table Booking')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] to-[#E6CA65] rounded-xl hover:brightness-105 transition-all shadow-lg shadow-[#D4AF37]/20 whitespace-nowrap cursor-pointer"
+                    className="btn-luxury-gold px-6 py-3.5 text-sm font-semibold rounded-xl whitespace-nowrap cursor-pointer"
                   >
-                    <MessageSquareText className="w-4 h-4 text-[#0B1325]" />
+                    <MessageSquareText className="w-4 h-4" />
                     <span>{t('dining_cta_btn')}</span>
                   </a>
 
                   <a
                     href={`tel:${HOTEL_INFO.phoneClean}`}
-                    className="flex items-center gap-2 px-6 py-3.5 text-sm font-medium text-slate-200 bg-white/10 hover:bg-white/15 border border-white/20 rounded-xl transition-all whitespace-nowrap"
+                    className="btn-luxury-glass px-6 py-3.5 text-sm font-medium rounded-xl whitespace-nowrap cursor-pointer"
                   >
                     <Phone className="w-4 h-4 text-[#E6CA65]" />
                     <span>{HOTEL_INFO.phone}</span>

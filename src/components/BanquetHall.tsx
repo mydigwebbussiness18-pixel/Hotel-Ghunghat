@@ -97,7 +97,7 @@ export const BanquetHall: React.FC<BanquetHallProps> = ({ onOpenEventEnquiry }) 
                   <button
                     type="button"
                     onClick={() => onOpenEventEnquiry('Indoor Banquet Hall')}
-                    className="flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#0B1325] hover:bg-[#152342] rounded-xl shadow-lg transition-all cursor-pointer whitespace-nowrap"
+                    className="btn-luxury-navy px-7 py-3.5 text-sm font-semibold rounded-xl cursor-pointer whitespace-nowrap"
                   >
                     <CalendarDays className="w-4 h-4 text-[#E6CA65]" />
                     <span>{t('banquet_btn_quote')}</span>

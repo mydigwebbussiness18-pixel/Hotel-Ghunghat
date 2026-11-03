@@ -97,10 +97,10 @@ export const Rooms: React.FC<RoomsProps> = ({ onSelectRoom }) => {
                   <button
                     type="button"
                     onClick={() => onSelectRoom(room.id)}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-[#0B1325] bg-[#FAF8F5] hover:bg-[#C5A880] hover:text-[#0B1325] border border-[#C5A880]/50 rounded-xl transition-all duration-200 cursor-pointer group/btn"
+                    className="btn-luxury-navy w-full py-3.5 px-4 text-sm font-semibold rounded-xl cursor-pointer group/btn"
                   >
                     <span>{t('room_book_btn')}</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 text-[#E6CA65] group-hover/btn:text-[#0B1325] group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>

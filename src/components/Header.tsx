@@ -86,11 +86,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               <button
                 type="button"
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-200 bg-white/10 hover:bg-white/15 rounded border border-white/20 transition-colors whitespace-nowrap shrink-0"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-200 bg-white/10 hover:bg-[#0B1325] hover:text-[#E6CA65] hover:border-[#E6CA65]/80 rounded-lg border border-white/20 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(230,202,101,0.25)] active:scale-95 transition-all duration-300 whitespace-nowrap shrink-0 cursor-pointer"
                 aria-label="Select Language"
               >
                 <Globe className="w-3.5 h-3.5 text-[#E6CA65]" />
-                <span>{languageLabels[language].code}</span>
+                <span className="tracking-wide">{languageLabels[language].code}</span>
               </button>
 
               {isLangMenuOpen && (
@@ -99,7 +99,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                     className="fixed inset-0 z-10"
                     onClick={() => setIsLangMenuOpen(false)}
                   />
-                  <div className="absolute right-0 mt-2 w-36 bg-[#0F1E36] border border-[#C5A880]/30 rounded-lg shadow-xl py-1 z-20 text-xs">
+                  <div className="absolute right-0 mt-2 w-36 bg-[#0B1325] border border-[#C5A880]/50 rounded-xl shadow-2xl py-1.5 z-20 text-xs">
                     {(Object.keys(languageLabels) as Language[]).map((lang) => (
                       <button
                         key={lang}
@@ -108,10 +108,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                           setLanguage(lang);
                           setIsLangMenuOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 flex items-center justify-between transition-colors ${
+                        className={`w-full text-left px-3.5 py-2 flex items-center justify-between transition-all duration-200 ${
                           language === lang
                             ? 'bg-[#C5A880]/20 text-[#E6CA65] font-semibold'
-                            : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                            : 'text-slate-300 hover:bg-[#C5A880]/15 hover:text-[#E6CA65]'
                         }`}
                       >
                         <span>{languageLabels[lang].label}</span>
@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
             {/* Quick Call */}
             <a
               href={`tel:${HOTEL_INFO.phoneClean}`}
-              className="hidden sm:flex items-center gap-1.5 text-xs text-slate-200 hover:text-[#E6CA65] transition-colors whitespace-nowrap shrink-0"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-200 bg-white/5 hover:bg-white/15 hover:text-[#E6CA65] rounded-lg border border-transparent hover:border-[#E6CA65]/40 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap shrink-0"
               title="Call Reception"
             >
               <Phone className="w-3.5 h-3.5 text-[#E6CA65]" />
@@ -137,9 +137,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
             <button
               type="button"
               onClick={() => onOpenBooking()}
-              className="flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold tracking-wide text-[#0B1325] bg-gradient-to-r from-[#D4AF37] via-[#E6CA65] to-[#C5A880] rounded hover:shadow-lg hover:shadow-[#D4AF37]/20 hover:brightness-105 active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-luxury-gold px-4 py-2 sm:px-5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg cursor-pointer"
             >
-              <CalendarCheck className="w-4 h-4 text-[#0B1325]" />
+              <CalendarCheck className="w-4 h-4" />
               <span>{t('nav_book_now')}</span>
             </button>
 
@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6CA65] rounded"
+              className="lg:hidden p-2 text-slate-200 bg-white/10 hover:bg-[#0B1325] hover:text-[#E6CA65] hover:border-[#E6CA65]/70 border border-white/20 rounded-lg hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 focus:outline-none cursor-pointer"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -173,16 +173,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               <div className="pt-3 mt-2 border-t border-white/10 flex flex-col gap-3">
                 <div className="flex items-center justify-between px-3 text-xs text-slate-400">
                   <span>{t('select_language')}:</span>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1.5">
                     {(Object.keys(languageLabels) as Language[]).map((lang) => (
                       <button
                         key={lang}
                         type="button"
                         onClick={() => setLanguage(lang)}
-                        className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                        className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
                           language === lang
-                            ? 'bg-[#C5A880] text-[#0B1325] font-bold'
-                            : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                            ? 'bg-[#E6CA65] text-[#0B1325] shadow-sm font-bold'
+                            : 'bg-white/10 text-slate-200 hover:bg-[#0B1325] hover:text-[#E6CA65] border border-white/10'
                         }`}
                       >
                         {languageLabels[lang].label}
@@ -193,7 +193,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
 
                 <a
                   href={`tel:${HOTEL_INFO.phoneClean}`}
-                  className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/15 transition-colors"
+                  className="btn-luxury-glass flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium rounded-xl"
                 >
                   <Phone className="w-4 h-4 text-[#E6CA65]" />
                   <span>{HOTEL_INFO.phone}</span>
@@ -205,7 +205,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                     setIsMobileMenuOpen(false);
                     onOpenBooking();
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] via-[#E6CA65] to-[#C5A880] rounded-lg shadow-md"
+                  className="btn-luxury-gold w-full flex items-center justify-center gap-2 px-4 py-3.5 text-sm font-bold rounded-xl cursor-pointer"
                 >
                   <CalendarCheck className="w-4 h-4" />
                   <span>{t('nav_book_now')}</span>

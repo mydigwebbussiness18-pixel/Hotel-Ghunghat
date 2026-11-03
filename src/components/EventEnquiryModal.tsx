@@ -97,7 +97,7 @@ export const EventEnquiryModal: React.FC<EventEnquiryModalProps> = ({
         <button
           type="button"
           onClick={handleResetAndClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 w-10 h-10 rounded-full text-slate-500 hover:text-[#0B1325] hover:bg-slate-100 border border-transparent hover:border-slate-300 hover:rotate-90 hover:scale-105 transition-all duration-300 flex items-center justify-center cursor-pointer"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -247,7 +247,7 @@ export const EventEnquiryModal: React.FC<EventEnquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-4 text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] via-[#E6CA65] to-[#C5A880] rounded-xl hover:brightness-105 active:scale-[0.99] transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                  className="btn-luxury-gold w-full py-3.5 px-4 text-sm font-semibold rounded-xl cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? t('form_submitting') : t('form_submit_event')}
                 </button>
@@ -277,7 +277,7 @@ export const EventEnquiryModal: React.FC<EventEnquiryModalProps> = ({
                 href={createEventWhatsAppUrl(formData)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-all shadow-md cursor-pointer"
+                className="btn-luxury-whatsapp w-full py-3.5 px-4 text-sm font-bold rounded-xl cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>{t('form_success_wa_btn')}</span>
@@ -288,7 +288,7 @@ export const EventEnquiryModal: React.FC<EventEnquiryModalProps> = ({
               <button
                 type="button"
                 onClick={handleResetAndClose}
-                className="px-6 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
+                className="btn-luxury-navy px-6 py-2.5 text-sm font-medium rounded-xl cursor-pointer"
               >
                 {t('form_close')}
               </button>

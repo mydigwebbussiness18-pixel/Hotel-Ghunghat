@@ -26,7 +26,7 @@ export const WhatsAppFloatingButton: React.FC = () => {
         rel="noopener noreferrer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 cursor-pointer"
+        className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#0B1325] text-white hover:text-[#25D366] border border-white/30 hover:border-[#25D366] flex items-center justify-center shadow-2xl hover:shadow-[0_12px_30px_rgba(37,211,102,0.55)] hover:-translate-y-1 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 cursor-pointer"
         aria-label="Chat with Hotel Ghunghat on WhatsApp"
       >
         {/* SVG WhatsApp Icon for crisp rendering */}

@@ -15,6 +15,7 @@ export const HOTEL_INFO = {
   rating: 4.1,
   maxRating: 5.0,
   googleMapsUrl: 'https://maps.app.goo.gl/h1YKpmW68jtAuLv69',
+  googleBusinessProfileUrl: 'https://share.google/KyMGrzVVSrjzQrf7U',
   instagramUrl: 'https://www.instagram.com/hotelghunghat/',
   embedMapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2751767664655!2d72.6565384!3d23.2508107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2b64d0cb5a9d%3A0x867375a0cbb0df29!2sHOTEL%20GHUNGHAT!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin',
   categories: ['Hotel Accommodation', 'Pure Veg & Multi-Cuisine Dining', 'Banquet Hall', 'Wedding & Party Lawn'],

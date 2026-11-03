@@ -75,7 +75,7 @@ export const GoogleReviews: React.FC = () => {
                   href={HOTEL_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#0B1325] bg-gradient-to-r from-[#D4AF37] to-[#E6CA65] rounded-lg hover:brightness-105 transition-all shadow-md whitespace-nowrap"
+                  className="btn-luxury-gold px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl whitespace-nowrap"
                 >
                   <span>{t('reviews_btn_google')}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -85,7 +85,7 @@ export const GoogleReviews: React.FC = () => {
                   href={HOTEL_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-medium text-slate-200 bg-white/10 hover:bg-white/15 border border-white/20 rounded-lg transition-all whitespace-nowrap"
+                  className="btn-luxury-glass px-5 py-2.5 text-xs sm:text-sm font-medium rounded-xl whitespace-nowrap"
                 >
                   <MapPin className="w-3.5 h-3.5 text-[#E6CA65]" />
                   <span>{t('reviews_btn_directions')}</span>
