@@ -18,6 +18,7 @@ import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { BookingModal } from './components/BookingModal';
 import { EventEnquiryModal } from './components/EventEnquiryModal';
 import { ThreeDBackground } from './components/ThreeDBackground';
+import { LuxurySectionDivider } from './components/LuxurySectionDivider';
 
 export default function App() {
   // Modal states
@@ -75,32 +76,62 @@ export default function App() {
           {/* Hero Section with Quick Booking Strip */}
           <Hero onOpenBooking={(data) => handleOpenBooking(data)} />
 
+          {/* Transition: Hero (Dark #0B1325) -> About (Light #FAF8F5) */}
+          <LuxurySectionDivider type="curve-dark-to-light" fromColor="#0B1325" toColor="#FAF8F5" />
+
           {/* About Hotel Ghunghat */}
           <About />
+
+          {/* Transition: About (Light) -> Rooms (Warm Light) */}
+          <LuxurySectionDivider type="ornamental-gold" />
 
           {/* Rooms & Accommodation */}
           <Rooms onSelectRoom={handleSelectRoom} />
 
+          {/* Transition: Rooms (Light #F4EFEA) -> Restaurant (Dark #0B1325) */}
+          <LuxurySectionDivider type="curve-light-to-dark" fromColor="#F4EFEA" toColor="#0B1325" />
+
           {/* Restaurant & Dining (Gujarati & Punjabi) */}
           <Restaurant />
+
+          {/* Transition: Restaurant (Dark #0B1325) -> BanquetHall (Light #FAF8F5) */}
+          <LuxurySectionDivider type="curve-dark-to-light" fromColor="#0B1325" toColor="#FAF8F5" />
 
           {/* Indoor Banquet Hall */}
           <BanquetHall onOpenEventEnquiry={handleOpenEventEnquiry} />
 
+          {/* Transition: BanquetHall (Light #FAF8F5) -> PartyLawn (Dark #0F1E36) */}
+          <LuxurySectionDivider type="curve-light-to-dark" fromColor="#FAF8F5" toColor="#0F1E36" />
+
           {/* Wedding & Celebration Party Lawn */}
           <PartyLawn onOpenEventEnquiry={handleOpenEventEnquiry} />
+
+          {/* Transition: PartyLawn (Dark #0F1E36) -> Gallery (Light #FAF8F5) */}
+          <LuxurySectionDivider type="curve-dark-to-light" fromColor="#0F1E36" toColor="#FAF8F5" />
 
           {/* Categorized Filterable Gallery */}
           <Gallery />
 
+          {/* Transition: Gallery (Light) -> Facilities (Light Neutral) */}
+          <LuxurySectionDivider type="geometric-crest" />
+
           {/* Verified Amenities & Facilities */}
           <Facilities />
+
+          {/* Transition: Facilities (Light) -> GoogleReviews (Light) */}
+          <LuxurySectionDivider type="ornamental-gold" />
 
           {/* Verified Google Business Rating (4.1/5) & Reviews */}
           <GoogleReviews />
 
+          {/* Transition: GoogleReviews (Light) -> LocationMap (Light) */}
+          <LuxurySectionDivider type="geometric-crest" />
+
           {/* Location & Directions Map */}
           <LocationMap />
+
+          {/* Transition: LocationMap (Light) -> FAQ (Light) */}
+          <LuxurySectionDivider type="ornamental-gold" />
 
           {/* Frequently Asked Questions (FAQ) Section */}
           <FAQ
@@ -108,8 +139,14 @@ export default function App() {
             onOpenEventEnquiry={handleOpenEventEnquiry}
           />
 
+          {/* Transition: FAQ (Light) -> Contact (Warm Light) */}
+          <LuxurySectionDivider type="geometric-crest" />
+
           {/* Contact & Inquiry Channels */}
           <Contact />
+
+          {/* Transition: Contact (Light #F4EFEA) -> Footer (Dark #0B1325) */}
+          <LuxurySectionDivider type="curve-light-to-dark" fromColor="#F4EFEA" toColor="#0B1325" />
         </main>
 
         {/* Global Footer */}

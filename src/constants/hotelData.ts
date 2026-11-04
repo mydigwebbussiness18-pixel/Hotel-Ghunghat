@@ -23,7 +23,7 @@ export const HOTEL_INFO = {
 };
 
 export const HOTEL_IMAGES = {
-  hero: '/src/assets/images/hotel_exterior_hero_1793689845203.jpg',
+  hero: '/assets/aistudio/Twilight_Courtyard_at_a_Tropical_Resort_ce86ea60.png',
   roomLuxury: '/src/assets/images/hotel_luxury_room_1793689846698.jpg',
   restaurant: '/src/assets/images/hotel_restaurant_dining_1793689847324.jpg',
   banquet: '/src/assets/images/hotel_banquet_hall_1793689848254.jpg',

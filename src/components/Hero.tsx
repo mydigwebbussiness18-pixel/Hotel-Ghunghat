@@ -54,13 +54,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       >
         <img
           src={HOTEL_IMAGES.hero}
-          alt="Hotel Ghunghat exterior entrance dusk architecture in Gandhinagar"
+          alt="Hotel Ghunghat twilight courtyard architecture and garden illumination in Gandhinagar"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center scale-110"
+          className="w-full h-full object-cover object-center scale-105"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325] via-[#0B1325]/75 to-[#0B1325]/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1325]/90 via-[#0B1325]/60 to-transparent" />
-        <div className="absolute inset-0 bg-radial-[circle_at_center,_transparent_0%,_rgba(11,19,37,0.4)_100%]" />
+        {/* Subtle Dark Overlays for Text Readability and Warm Twilight Atmosphere */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325]/95 via-[#0B1325]/50 to-[#0B1325]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1325]/85 via-[#0B1325]/45 to-transparent" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Main Hero Content with 3D Spatial Drift */}
@@ -93,12 +95,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-black tracking-tight leading-[1.06] text-balance">
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-white tracking-tight leading-[1.06] text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             {t('hero_headline')}
           </h1>
 
           {/* Subheading */}
-          <p className="text-base sm:text-lg lg:text-xl text-black font-normal leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-100 font-normal leading-relaxed max-w-2xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
             {t('hero_subtitle')}
           </p>
 
