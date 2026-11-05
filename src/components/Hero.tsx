@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Star, ChevronRight, Calendar, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { HOTEL_IMAGES, HOTEL_INFO } from '../constants/hotelData';
+import { Hero3DBackground } from './Hero3DBackground';
 
 interface HeroProps {
   onOpenBooking: (initialData?: { checkIn?: string; checkOut?: string; adults?: number }) => void;
@@ -43,70 +44,56 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between pt-28 pb-12 overflow-hidden">
-      {/* Background Image with Cinematic 3D Depth Parallax & Contrast Scrim */}
-      <div
-        className="absolute inset-0 -z-10 overflow-hidden"
-        style={{
-          transform: `translate3d(0, ${scrollY * 0.32}px, 0) scale(${1 + scrollY * 0.00025})`,
-          willChange: 'transform'
-        }}
-      >
-        <img
-          src={HOTEL_IMAGES.hero}
-          alt="Hotel Ghunghat twilight courtyard architecture and garden illumination in Gandhinagar"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center scale-105"
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-        />
-        {/* Subtle Dark Overlays for Text Readability and Warm Twilight Atmosphere */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325]/95 via-[#0B1325]/50 to-[#0B1325]/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1325]/85 via-[#0B1325]/45 to-transparent" />
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
+    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between pt-32 sm:pt-36 lg:pt-40 pb-12 overflow-hidden bg-[#0B1325]">
+      {/* Dark Blue 3D Animated Background Layer with Interactive Parallax */}
+      <Hero3DBackground scrollY={scrollY} />
 
       {/* Main Hero Content with 3D Spatial Drift */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-10 lg:py-14"
         style={{
-          transform: `translate3d(0, ${scrollY * 0.12}px, 0)`,
+          transform: `translate3d(0, ${scrollY * 0.1}px, 0)`,
           opacity: Math.max(0.1, 1 - scrollY / 850),
           willChange: 'transform, opacity'
         }}
       >
-        <div className="max-w-3xl space-y-6">
-          
+        {/* Luxury Glassmorphic Hero Showcase Card */}
+        <div className="max-w-3xl space-y-6 rounded-3xl bg-[#061022]/45 backdrop-blur-md border border-[#E6CA65]/25 p-6 sm:p-9 lg:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.65)] relative overflow-hidden group">
+          {/* Subtle Ambient Golden Shimmer Rim */}
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#E6CA65]/60 to-transparent pointer-events-none" />
+          <div className="absolute top-0 -left-20 w-48 h-48 bg-[#E6CA65]/10 rounded-full blur-2xl pointer-events-none" />
+
           {/* Provenance Tag */}
-          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium tracking-[0.2em] text-[#E6CA65] uppercase">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#E6CA65] uppercase">
             <span>Gandhinagar</span>
-            <span aria-hidden="true" className="w-1 h-1 rounded-full bg-[#E6CA65]/60" />
+            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#E6CA65]/80 shadow-[0_0_6px_#E6CA65]" />
             <span>Sector-26 GIDC</span>
-            <span aria-hidden="true" className="w-1 h-1 rounded-full bg-[#E6CA65]/60" />
+            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#E6CA65]/80 shadow-[0_0_6px_#E6CA65]" />
             <span>Gujarat</span>
           </div>
 
-          {/* Heading */}
-          <div className="flex items-center gap-3 pt-1">
+          {/* Heading Eyebrow */}
+          <div className="flex items-center gap-3 pt-0.5">
             <span className="h-px w-6 sm:w-10 bg-gradient-to-r from-transparent to-[#E6CA65]" aria-hidden="true" />
-            <h2 className="font-serif text-sm sm:text-base lg:text-lg font-medium tracking-[0.15em] uppercase text-[#E6CA65] drop-shadow-sm">
+            <h2 className="font-serif text-sm sm:text-base lg:text-lg font-medium tracking-[0.16em] uppercase text-[#E6CA65] drop-shadow-sm">
               {t('hero_eyebrow')}
             </h2>
             <span className="h-px w-6 sm:w-10 bg-gradient-to-l from-transparent to-[#E6CA65]" aria-hidden="true" />
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-bold text-white tracking-tight leading-[1.06] text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-[4.75rem] font-bold text-white tracking-tight leading-[1.07] text-balance drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
             {t('hero_headline')}
           </h1>
 
           {/* Subheading */}
-          <p className="text-base sm:text-lg lg:text-xl text-slate-100 font-normal leading-relaxed max-w-2xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-100 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             {t('hero_subtitle')}
           </p>
 
           {/* Verified Google Rating Trust Signal */}
-          <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-300 pt-1">
-            <div className="flex items-center text-[#E6CA65]">
+          <div className="flex items-center flex-wrap gap-3 text-xs sm:text-sm text-slate-300 pt-1">
+            <div className="flex items-center text-[#E6CA65] drop-shadow-[0_0_6px_rgba(230,202,101,0.5)]">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
@@ -124,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               href={HOTEL_INFO.googleBusinessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+              className="text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium"
             >
               Google Business Profile
             </a>
@@ -151,12 +138,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
         </div>
       </div>
 
-      {/* Full-Width Quick Booking Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Full-Width Quick Booking Strip at Foot of Home */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-4">
         <form
           onSubmit={handleQuickSearch}
           aria-label="Quick Room Search"
-          className="bg-[#0F1E36]/90 backdrop-blur-md border border-[#C5A880]/30 rounded-xl p-4 sm:p-5 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
+          className="bg-[#0B1325] border border-[#C5A880]/35 rounded-xl p-4 sm:p-5 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end relative z-10"
         >
           {/* Check-In */}
           <div className="space-y-1.5">

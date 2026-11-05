@@ -19,6 +19,7 @@ import { BookingModal } from './components/BookingModal';
 import { EventEnquiryModal } from './components/EventEnquiryModal';
 import { ThreeDBackground } from './components/ThreeDBackground';
 import { LuxurySectionDivider } from './components/LuxurySectionDivider';
+import { CustomScrollbar } from './components/CustomScrollbar';
 
 export default function App() {
   // Modal states
@@ -64,9 +65,12 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-slate-800 font-sans selection:bg-[#C5A880]/30 selection:text-slate-900 relative">
+      <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-slate-800 font-sans selection:bg-[#C5A880]/30 selection:text-slate-900 relative w-full max-w-full overflow-x-clip">
         {/* 3D Atmospheric Depth & Floating Gold Particles Background */}
         <ThreeDBackground />
+
+        {/* Premium Built-In Vertical Scrollbar */}
+        <CustomScrollbar />
         
         {/* Sticky Header */}
         <Header onOpenBooking={() => handleOpenBooking()} />

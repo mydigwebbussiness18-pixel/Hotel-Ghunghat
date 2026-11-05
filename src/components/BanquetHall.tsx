@@ -31,7 +31,7 @@ export const BanquetHall: React.FC<BanquetHallProps> = ({ onOpenEventEnquiry }) 
   ];
 
   return (
-    <section id="banquet" className="py-20 lg:py-28 bg-[#FAF8F5] relative">
+    <section id="banquet" className="py-20 lg:py-28 bg-[#FAF8F5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

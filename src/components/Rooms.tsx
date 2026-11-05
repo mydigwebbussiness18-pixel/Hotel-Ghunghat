@@ -12,7 +12,7 @@ export const Rooms: React.FC<RoomsProps> = ({ onSelectRoom }) => {
   const { t } = useLanguage();
 
   return (
-    <section id="rooms" className="py-20 lg:py-28 bg-[#F4EFEA]/60 relative">
+    <section id="rooms" className="py-20 lg:py-28 bg-[#F4EFEA]/60 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

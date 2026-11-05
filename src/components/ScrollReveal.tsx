@@ -69,15 +69,15 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
     switch (direction) {
       case 'up':
-        return 'perspective(1200px) translateY(36px) rotateX(5deg) scale(0.98)';
+        return 'perspective(1200px) translateY(28px) rotateX(4deg) scale(0.98)';
       case 'down':
-        return 'perspective(1200px) translateY(-36px) rotateX(-5deg) scale(0.98)';
+        return 'perspective(1200px) translateY(-28px) rotateX(-4deg) scale(0.98)';
       case 'left':
-        return 'perspective(1200px) translateX(36px) rotateY(-5deg) scale(0.98)';
+        return 'perspective(1200px) translate3d(14px, 14px, 0) rotateY(-3deg) scale(0.98)';
       case 'right':
-        return 'perspective(1200px) translateX(-36px) rotateY(5deg) scale(0.98)';
+        return 'perspective(1200px) translate3d(-14px, 14px, 0) rotateY(3deg) scale(0.98)';
       default:
-        return 'perspective(1200px) scale(0.96)';
+        return 'perspective(1200px) scale(0.97)';
     }
   };
 
@@ -85,14 +85,14 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <div
       ref={ref}
       style={{
-        transitionDuration: '750ms',
+        transitionDuration: '700ms',
         transitionDelay: `${delay}ms`,
         transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
         transform: isVisible ? 'perspective(1200px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1)' : getInitialTransform(),
         opacity: isVisible ? 1 : 0,
         willChange: 'transform, opacity'
       }}
-      className={`transition-all ${className}`}
+      className={`transition-all max-w-full ${className}`}
     >
       {children}
     </div>

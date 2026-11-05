@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Instagram, ShieldCheck, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { HOTEL_INFO } from '../constants/hotelData';
+import { HOTEL_INFO, HOTEL_IMAGES } from '../constants/hotelData';
 import { PrivacyModal } from './PrivacyModal';
 
 export const Footer: React.FC = () => {
@@ -21,16 +21,30 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#0B1325] text-slate-300 pt-16 pb-12 border-t border-[#C5A880]/20 relative">
+    <footer className="bg-[#0B1325] text-slate-300 pt-16 pb-12 border-t border-[#C5A880]/20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10">
           
           {/* Brand & Narrative */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-white tracking-wider">
-              HOTEL GHUNGHAT
-            </h3>
+            <a href="#home" className="flex items-center gap-3.5 group inline-flex" aria-label="Hotel Ghunghat Home">
+              <div className="relative w-12 h-12 rounded-full p-0.5 bg-gradient-to-br from-[#E6CA65] via-[#C5A880] to-[#9E7D3B] shadow-[0_0_14px_rgba(230,202,101,0.35)] group-hover:scale-105 transition-all duration-300 shrink-0">
+                <img
+                  src={HOTEL_IMAGES.logo}
+                  alt="Hotel Ghunghat Official Logo"
+                  className="w-full h-full object-cover object-top rounded-full bg-[#0B1325]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-white tracking-wider group-hover:text-[#E6CA65] transition-colors leading-tight">
+                  HOTEL GHUNGHAT
+                </h3>
+                <span className="text-[10px] sm:text-xs tracking-[0.24em] text-[#E6CA65] uppercase font-medium">
+                  Gandhinagar · Gujarat
+                </span>
+              </div>
+            </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-md">
               {t('footer_about')}
             </p>

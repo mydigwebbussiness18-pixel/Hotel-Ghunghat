@@ -8,7 +8,7 @@ export const LocationMap: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 lg:py-24 bg-[#FAF8F5] relative">
+    <section className="py-20 lg:py-24 bg-[#FAF8F5] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

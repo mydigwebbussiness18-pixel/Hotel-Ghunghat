@@ -64,9 +64,7 @@ export const LuxurySectionDivider: React.FC<LuxurySectionDividerProps> = ({
       <div
         ref={containerRef}
         aria-hidden="true"
-        className={`relative w-full overflow-hidden select-none pointer-events-none transition-opacity duration-1000 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        } ${className}`}
+        className={`relative w-full overflow-hidden select-none pointer-events-none ${className}`}
         style={{ backgroundColor: bgTop }}
       >
         <svg
@@ -132,9 +130,7 @@ export const LuxurySectionDivider: React.FC<LuxurySectionDividerProps> = ({
       <div
         ref={containerRef}
         aria-hidden="true"
-        className={`relative w-full overflow-hidden select-none pointer-events-none transition-opacity duration-1000 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        } ${className}`}
+        className={`relative w-full overflow-hidden select-none pointer-events-none ${className}`}
         style={{ backgroundColor: bgTop }}
       >
         <svg
