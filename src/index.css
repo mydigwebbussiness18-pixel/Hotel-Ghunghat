@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -24,11 +29,6 @@ body::-webkit-scrollbar {
 }
 
 @layer base {
-  :root {
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-
   body {
     font-family: var(--font-sans);
     color: #1E293B;
@@ -41,18 +41,90 @@ body::-webkit-scrollbar {
     position: relative;
   }
 
-  h1, h2, h3, .font-display {
+  h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-serif);
   }
+}
 
-  /* Specific font overrides for Gujarati and Hindi when active */
-  html[lang="gu"] body {
-    font-family: 'Noto Sans Gujarati', var(--font-sans);
-  }
+/* ========================================================
+   PREMIUM GUJARATI & HINDI TYPOGRAPHY SYSTEM
+   - Editorial serif headings (Noto Serif Gujarati / Noto Serif Devanagari)
+   - Refined sub-headings & body (Hind Vadodara / Hind + Noto Sans fallbacks)
+   - Indic-safe line-height & letter-spacing so vowel marks (matras)
+     and Devanagari shirorekha render cleanly without clipping or gaps
+   ======================================================== */
 
-  html[lang="hi"] body {
-    font-family: 'Noto Sans Devanagari', var(--font-sans);
-  }
+html[lang="gu"] {
+  --font-serif: 'Playfair Display', 'Noto Serif Gujarati', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Hind Vadodara', 'Noto Sans Gujarati', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="hi"] {
+  --font-serif: 'Playfair Display', 'Noto Serif Devanagari', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Hind', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+}
+
+html[lang="gu"] body,
+html[lang="hi"] body {
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="gu"] h1,
+html[lang="gu"] h2,
+html[lang="gu"] h3,
+html[lang="gu"] h4,
+html[lang="gu"] h5,
+html[lang="gu"] h6,
+html[lang="gu"] .font-serif,
+html[lang="gu"] .font-display,
+html[lang="hi"] h1,
+html[lang="hi"] h2,
+html[lang="hi"] h3,
+html[lang="hi"] h4,
+html[lang="hi"] h5,
+html[lang="hi"] h6,
+html[lang="hi"] .font-serif,
+html[lang="hi"] .font-display {
+  font-family: var(--font-serif);
+  letter-spacing: 0;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Prevent matra clipping on tall display headlines and card headings */
+html[lang="gu"] h1,
+html[lang="hi"] h1 {
+  line-height: 1.28;
+}
+
+html[lang="gu"] h2,
+html[lang="gu"] h3,
+html[lang="gu"] h4,
+html[lang="hi"] h2,
+html[lang="hi"] h3,
+html[lang="hi"] h4 {
+  line-height: 1.38;
+}
+
+/* Refined sub-headings, eyebrows, and kickers without breaking Devanagari shirorekha */
+html[lang="gu"] [class*="tracking-"],
+html[lang="hi"] [class*="tracking-"] {
+  letter-spacing: 0;
+}
+
+html[lang="gu"] [class*="uppercase"][class*="tracking-"] {
+  letter-spacing: 0.015em;
+}
+
+html[lang="gu"] h2 + p,
+html[lang="hi"] h2 + p,
+html[lang="gu"] h1 + p,
+html[lang="hi"] h1 + p {
+  font-family: var(--font-sans);
+  line-height: 1.72;
 }
 
 /* Custom smooth luxury animations and utility classes */
@@ -79,13 +151,97 @@ body::-webkit-scrollbar {
   }
 }
 
+/* Smooth, continuous GPU-accelerated floating animations (10–15px, 3–5s) */
+@keyframes floatImage {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, var(--float-y, -12px), 0);
+  }
+}
+
+@keyframes floatHeroImage {
+  0%, 100% {
+    transform: translate3d(0, 6px, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
 .animate-float-slow {
   animation: floatSlow 7s ease-in-out infinite;
 }
 
+.animate-float-hero {
+  animation: floatHeroImage 4.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-card {
+  --float-y: -12px;
+  animation: floatImage 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-card-alt {
+  --float-y: -11px;
+  animation: floatImage 4.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-card-deep {
+  --float-y: -13px;
+  animation: floatImage 4.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Smooth Mobile Navigation Drawer & Backdrop Animations */
+@keyframes mobileDrawerIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-mobile-drawer {
+  animation: mobileDrawerIn 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-backdrop-fade {
+  animation: backdropFadeIn 220ms ease-out forwards;
+}
+
+/* Ensure anchored section headings sit cleanly below the sticky header */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-slow {
+  .animate-float-slow,
+  .animate-float-hero,
+  .animate-float-card,
+  .animate-float-card-alt,
+  .animate-float-card-deep,
+  .animate-mobile-drawer,
+  .animate-backdrop-fade {
     animation: none !important;
+    transform: none !important;
+    will-change: auto;
   }
   button, 
   [role="button"],

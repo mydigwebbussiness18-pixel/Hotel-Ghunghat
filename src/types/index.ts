@@ -5,6 +5,8 @@ export interface RoomItem {
   nameKey: string;
   descKey: string;
   image: string;
+  images?: string[];
+  imagePositions?: string[];
   occupancy: string;
   bedType: string;
   size: string;
@@ -17,6 +19,7 @@ export interface GalleryItem {
   category: 'exterior' | 'rooms' | 'restaurant' | 'banquet' | 'lawn' | 'events';
   image: string;
   alt: string;
+  objectPosition?: string;
   isIllustrative?: boolean;
 }
 

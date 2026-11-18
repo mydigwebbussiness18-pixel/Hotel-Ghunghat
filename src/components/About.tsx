@@ -24,12 +24,16 @@ export const About: React.FC = () => {
           {/* Left Column: Visual Asset with 3D Depth Frame */}
           <div className="lg:col-span-5 relative">
             <ScrollReveal direction="left" delay={100}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C5A880]/30 bg-slate-900 group">
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C5A880]/30 bg-slate-900 group animate-float-card"
+                style={{ animationDelay: '0.3s' }}
+              >
                 <Parallax3DImage
-                  src={HOTEL_IMAGES.hero}
-                  alt="Hotel Ghunghat Gandhinagar exterior and entrance"
+                  src={HOTEL_IMAGES.entranceGate}
+                  alt="Grand illuminated entrance arch gate and palm courtyard at Hotel Ghunghat Gandhinagar"
                   containerClassName="h-[420px] sm:h-[480px]"
                   className="h-full"
+                  objectPosition="center 22%"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325]/85 via-transparent to-transparent pointer-events-none" />
                 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, ZoomIn, Eye } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { X, ZoomIn, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { GALLERY_DATA } from '../constants/hotelData';
 import { GalleryItem } from '../types';
@@ -23,6 +23,33 @@ export const Gallery: React.FC = () => {
   const filteredItems = activeCategory === 'all'
     ? GALLERY_DATA
     : GALLERY_DATA.filter((item) => item.category === activeCategory);
+
+  const selectedIndex = selectedImage
+    ? filteredItems.findIndex((item) => item.id === selectedImage.id)
+    : -1;
+
+  const handlePrevImage = useCallback(() => {
+    if (selectedIndex < 0 || filteredItems.length === 0) return;
+    const prevIdx = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+    setSelectedImage(filteredItems[prevIdx]);
+  }, [selectedIndex, filteredItems]);
+
+  const handleNextImage = useCallback(() => {
+    if (selectedIndex < 0 || filteredItems.length === 0) return;
+    const nextIdx = (selectedIndex + 1) % filteredItems.length;
+    setSelectedImage(filteredItems[nextIdx]);
+  }, [selectedIndex, filteredItems]);
+
+  useEffect(() => {
+    if (!selectedImage) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+      if (e.key === 'ArrowLeft') handlePrevImage();
+      if (e.key === 'ArrowRight') handleNextImage();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [selectedImage, handlePrevImage, handleNextImage]);
 
   return (
     <section id="gallery" className="py-20 lg:py-28 bg-[#FAF8F5] relative overflow-hidden">
@@ -70,19 +97,21 @@ export const Gallery: React.FC = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item, idx) => (
-            <ScrollReveal key={item.id} direction="up" delay={idx * 60} tilt>
+            <ScrollReveal key={item.id} direction="up" delay={Math.min(idx * 50, 300)} tilt>
               <div
                 onClick={() => setSelectedImage(item)}
-                className="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer aspect-[16/10]"
+                className="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer aspect-[4/3]"
               >
                 <img
                   src={item.image}
                   alt={item.alt}
                   referrerPolicy="no-referrer"
                   loading="lazy"
+                  decoding="async"
+                  style={{ objectPosition: item.objectPosition || 'center' }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
                 <div className="absolute inset-0 p-5 flex flex-col justify-between">
                   <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
@@ -126,20 +155,42 @@ export const Gallery: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-[#0B1325]/85 text-white border border-white/25 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(230,202,101,0.4)] flex items-center justify-center transition-all duration-300 cursor-pointer"
+              className="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-[#0B1325]/85 text-white border border-white/25 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] hover:scale-105 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(230,202,101,0.4)] flex items-center justify-center transition-all duration-300 cursor-pointer"
               aria-label="Close Preview"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Image */}
+            {/* Modal Image with Prev/Next Navigation */}
             <div className="relative max-h-[75vh] overflow-hidden flex items-center justify-center bg-black">
+              {filteredItems.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handlePrevImage}
+                  aria-label="Previous gallery image"
+                  className="absolute left-3 sm:left-4 z-20 w-10 h-10 rounded-full bg-[#0B1325]/80 text-white border border-white/20 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+              )}
+
               <img
                 src={selectedImage.image}
                 alt={selectedImage.alt}
                 referrerPolicy="no-referrer"
                 className="w-full h-auto max-h-[75vh] object-contain"
               />
+
+              {filteredItems.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handleNextImage}
+                  aria-label="Next gallery image"
+                  className="absolute right-3 sm:right-4 z-20 w-10 h-10 rounded-full bg-[#0B1325]/80 text-white border border-white/20 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] flex items-center justify-center transition-all duration-200 cursor-pointer"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              )}
             </div>
 
             {/* Modal Footer */}
@@ -147,6 +198,7 @@ export const Gallery: React.FC = () => {
               <div>
                 <span className="text-xs uppercase tracking-wider text-[#E6CA65] font-semibold block">
                   {selectedImage.category.toUpperCase()}
+                  {filteredItems.length > 1 && selectedIndex >= 0 ? ` · ${selectedIndex + 1} / ${filteredItems.length}` : ''}
                 </span>
                 <h4 className="font-serif text-xl font-medium">
                   {t(selectedImage.titleKey)}

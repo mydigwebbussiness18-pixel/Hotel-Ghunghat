@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
     { href: '#about', labelKey: 'nav_about' },
     { href: '#rooms', labelKey: 'nav_rooms' },
     { href: '#restaurant', labelKey: 'nav_restaurant' },
-    { href: '#banquet', labelKey: 'nav_banquet' },
+    { href: '#night-view', labelKey: 'nav_night_view' },
     { href: '#lawn', labelKey: 'nav_lawn' },
     { href: '#gallery', labelKey: 'nav_gallery' },
     { href: '#faq', labelKey: 'nav_faq' },

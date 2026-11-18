@@ -6,6 +6,7 @@ interface Parallax3DImageProps {
   className?: string;
   containerClassName?: string;
   speed?: number; // Parallax scrolling factor
+  objectPosition?: string;
 }
 
 export const Parallax3DImage: React.FC<Parallax3DImageProps> = ({
@@ -13,7 +14,8 @@ export const Parallax3DImage: React.FC<Parallax3DImageProps> = ({
   alt,
   className = '',
   containerClassName = '',
-  speed = 0.05
+  speed = 0.05,
+  objectPosition = 'center'
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -97,6 +99,7 @@ export const Parallax3DImage: React.FC<Parallax3DImageProps> = ({
           alt={alt}
           referrerPolicy="no-referrer"
           loading="lazy"
+          style={{ objectPosition }}
           className={`w-full h-full object-cover select-none pointer-events-none ${className}`}
         />
 

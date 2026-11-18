@@ -44,13 +44,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between pt-32 sm:pt-36 lg:pt-40 pb-12 overflow-hidden bg-[#0B1325]">
+    <section
+      id="home"
+      className="relative isolate min-h-[92vh] flex flex-col justify-between pt-32 sm:pt-36 lg:pt-40 pb-12 overflow-hidden bg-[#0B1325] bg-cover bg-center"
+      style={{ backgroundImage: `url("${HOTEL_IMAGES.hero}")` }}
+    >
       {/* Dark Blue 3D Animated Background Layer with Interactive Parallax */}
       <Hero3DBackground scrollY={scrollY} />
 
       {/* Main Hero Content with 3D Spatial Drift */}
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-10 lg:py-14"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-10 lg:py-14"
         style={{
           transform: `translate3d(0, ${scrollY * 0.1}px, 0)`,
           opacity: Math.max(0.1, 1 - scrollY / 850),
@@ -111,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               href={HOTEL_INFO.googleBusinessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium"
+              className="text-[#15803D] hover:text-[#166534] hover:underline transition-colors font-semibold"
             >
               Google Business Profile
             </a>
@@ -139,7 +143,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       </div>
 
       {/* Full-Width Quick Booking Strip at Foot of Home */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 pb-4">
         <form
           onSubmit={handleQuickSearch}
           aria-label="Quick Room Search"

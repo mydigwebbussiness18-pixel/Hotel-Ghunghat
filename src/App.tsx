@@ -5,7 +5,7 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Rooms } from './components/Rooms';
 import { Restaurant } from './components/Restaurant';
-import { BanquetHall } from './components/BanquetHall';
+import { NightViewGallery } from './components/NightViewGallery';
 import { PartyLawn } from './components/PartyLawn';
 import { Gallery } from './components/Gallery';
 import { Facilities } from './components/Facilities';
@@ -98,13 +98,13 @@ export default function App() {
           {/* Restaurant & Dining (Gujarati & Punjabi) */}
           <Restaurant />
 
-          {/* Transition: Restaurant (Dark #0B1325) -> BanquetHall (Light #FAF8F5) */}
+          {/* Transition: Restaurant (Dark #0B1325) -> NightViewGallery (Light #FAF8F5) */}
           <LuxurySectionDivider type="curve-dark-to-light" fromColor="#0B1325" toColor="#FAF8F5" />
 
-          {/* Indoor Banquet Hall */}
-          <BanquetHall onOpenEventEnquiry={handleOpenEventEnquiry} />
+          {/* Night View Gallery */}
+          <NightViewGallery />
 
-          {/* Transition: BanquetHall (Light #FAF8F5) -> PartyLawn (Dark #0F1E36) */}
+          {/* Transition: NightViewGallery (Light #FAF8F5) -> PartyLawn (Dark #0F1E36) */}
           <LuxurySectionDivider type="curve-light-to-dark" fromColor="#FAF8F5" toColor="#0F1E36" />
 
           {/* Wedding & Celebration Party Lawn */}

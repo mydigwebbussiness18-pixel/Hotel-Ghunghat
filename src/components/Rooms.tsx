@@ -1,12 +1,101 @@
-import React from 'react';
-import { Users, Bed, Check, ShieldCheck, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, Bed, Check, ShieldCheck, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { ROOMS_DATA } from '../constants/hotelData';
+import { RoomItem } from '../types';
 import { ScrollReveal } from './ScrollReveal';
 
 interface RoomsProps {
   onSelectRoom: (roomId: string) => void;
 }
+
+const RoomImageSlider: React.FC<{ room: RoomItem; altText: string }> = ({ room, altText }) => {
+  const photos = room.images && room.images.length > 0 ? room.images : [room.image];
+  const positions = room.imagePositions || [];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev - 1 + photos.length) % photos.length);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev + 1) % photos.length);
+  };
+
+  return (
+    <div className="relative h-64 overflow-hidden bg-slate-900">
+      {photos.map((photoSrc, i) => (
+        <img
+          key={photoSrc}
+          src={photoSrc}
+          alt={altText}
+          referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
+          style={{ objectPosition: positions[i] || 'center' }}
+          className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500 ${
+            i === activeIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent pointer-events-none" />
+
+      {/* Subtle Angle Navigation Controls when multiple photos exist */}
+      {photos.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label={`Previous photo of ${altText}`}
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-[#0B1325]/70 text-white border border-white/20 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] flex items-center justify-center opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label={`Next photo of ${altText}`}
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-[#0B1325]/70 text-white border border-white/20 hover:bg-[#E6CA65] hover:text-[#0B1325] hover:border-[#E6CA65] flex items-center justify-center opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+
+          {/* Indicator Dots */}
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-black/45 backdrop-blur-sm px-2 py-1 rounded-full">
+            {photos.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveIndex(idx);
+                }}
+                aria-label={`View photo ${idx + 1} of ${altText}`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === activeIndex ? 'w-4 bg-[#E6CA65]' : 'w-1.5 bg-white/60 hover:bg-white'
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Meta details strip */}
+      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white pointer-events-none">
+        <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded">
+          <Users className="w-3.5 h-3.5 text-[#E6CA65]" />
+          <span>{room.occupancy}</span>
+        </div>
+        <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded">
+          <Bed className="w-3.5 h-3.5 text-[#E6CA65]" />
+          <span>{room.bedType}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const Rooms: React.FC<RoomsProps> = ({ onSelectRoom }) => {
   const { t } = useLanguage();
@@ -41,29 +130,8 @@ export const Rooms: React.FC<RoomsProps> = ({ onSelectRoom }) => {
               <div
                 className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-2xl hover:-translate-y-2 hover:border-[#C5A880]/50 transition-all duration-300 flex flex-col group h-full"
               >
-              {/* Room Image */}
-              <div className="relative h-64 overflow-hidden bg-slate-900">
-                <img
-                  src={room.image}
-                  alt={t(room.nameKey)}
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Meta details strip */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-                  <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded">
-                    <Users className="w-3.5 h-3.5 text-[#E6CA65]" />
-                    <span>{room.occupancy}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded">
-                    <Bed className="w-3.5 h-3.5 text-[#E6CA65]" />
-                    <span>{room.bedType}</span>
-                  </div>
-                </div>
-              </div>
+              {/* Room Image Slider */}
+              <RoomImageSlider room={room} altText={t(room.nameKey)} />
 
               {/* Card Body */}
               <div className="p-6 flex-1 flex flex-col justify-between space-y-6">

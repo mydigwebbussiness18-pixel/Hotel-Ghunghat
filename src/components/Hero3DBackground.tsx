@@ -180,13 +180,11 @@ export const Hero3DBackground: React.FC<Hero3DBackgroundProps> = ({ scrollY }) =
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // --- LAYER 1: Deep Midnight Navy & Royal Blue Atmosphere with Golden Auroras ---
-      // Base Midnight Navy
+      // --- LAYER 1: Translucent Midnight Navy Atmospheric Tint (preserves background image visibility) ---
       const baseGrad = ctx.createLinearGradient(0, 0, width, height);
-      baseGrad.addColorStop(0, '#050B17'); // Darkest Midnight Navy
-      baseGrad.addColorStop(0.45, '#0A162B'); // Deep Royal Navy
-      baseGrad.addColorStop(0.8, '#0E2142'); // Royal Sapphire Depth
-      baseGrad.addColorStop(1, '#070D1A'); // Ground Midnight Navy
+      baseGrad.addColorStop(0, 'rgba(5, 11, 23, 0.22)');
+      baseGrad.addColorStop(0.5, 'rgba(10, 22, 43, 0.12)');
+      baseGrad.addColorStop(1, 'rgba(7, 13, 26, 0.28)');
       ctx.fillStyle = baseGrad;
       ctx.fillRect(0, 0, width, height);
 
@@ -475,11 +473,11 @@ export const Hero3DBackground: React.FC<Hero3DBackgroundProps> = ({ scrollY }) =
 
   return (
     <div
-      className="absolute inset-0 -z-10 overflow-hidden bg-[#0B1325]"
+      className="absolute inset-0 z-0 overflow-hidden bg-[#0B1325]"
       style={{ perspective: '1200px' }}
       aria-hidden="true"
     >
-      {/* 1. Underlying Cinematic 3D Tilting Photograph (Hotel Ghunghat Twilight Courtyard) */}
+      {/* 1. Dedicated Home Page Background Image */}
       <div
         className="absolute inset-0 transition-transform duration-300 ease-out will-change-transform"
         style={{
@@ -489,26 +487,31 @@ export const Hero3DBackground: React.FC<Hero3DBackgroundProps> = ({ scrollY }) =
       >
         <img
           src={HOTEL_IMAGES.hero}
-          alt="Hotel Ghunghat twilight courtyard architecture and garden illumination in Gandhinagar"
+          alt="Hotel Ghunghat twilight courtyard architecture, illuminated palms, and garden ambience in Gandhinagar"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center"
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center animate-float-hero"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </div>
 
-      {/* 2. Layered Midnight Navy, Royal Blue & Soft Multi-tone Luxury Scrims */}
-      <div className="absolute inset-0 bg-[#0B1325]/70 mix-blend-multiply pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325] via-[#0A162B]/75 to-[#0B1325]/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1325]/95 via-[#0A162B]/70 to-[#0A162B]/40 pointer-events-none" />
+      {/* 2. Balanced Contrast Scrims keeping the twilight courtyard vivid */}
+      <div className="absolute inset-0 bg-[#0B1325]/15 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1325]/70 via-transparent to-[#0B1325]/35 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1325]/55 via-[#0A162B]/20 to-transparent pointer-events-none" />
 
-      {/* 3. 3D Animated Canvas Layer: Waves, Starlight, Orbiting Geometric Shapes & Auroras */}
+      {/* 3. 3D Animated Canvas Layer: Subtle Waves, Starlight, Orbiting Geometric Shapes & Auroras */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none z-0"
       />
 
-      {/* 4. Fine Champagne Gold Radial Halo & Vignette */}
-      <div className="absolute inset-0 bg-radial-[circle_at_center,_transparent_25%,_rgba(11,19,37,0.85)_100%] pointer-events-none" />
+      {/* 4. Subtle Vignette */}
+      <div className="absolute inset-0 bg-radial-[circle_at_center,_transparent_45%,_rgba(11,19,37,0.48)_100%] pointer-events-none" />
       
       {/* 5. 100% Solid Dark Blue Foot Section Transition */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0B1325] via-[#0B1325] to-transparent pointer-events-none" />

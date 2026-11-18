@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sparkles, Calendar, UtensilsCrossed, Trees } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { HOTEL_IMAGES } from '../constants/hotelData';
@@ -11,6 +11,30 @@ interface PartyLawnProps {
 
 export const PartyLawn: React.FC<PartyLawnProps> = ({ onOpenEventEnquiry }) => {
   const { t } = useLanguage();
+  const [selectedLawnIdx, setSelectedLawnIdx] = useState(0);
+
+  const lawnGallery = [
+    {
+      src: HOTEL_IMAGES.lawnSunsetEvent,
+      alt: 'Sunset anniversary and outdoor celebration setup on Hotel Ghunghat party lawn',
+      label: 'Sunset Events'
+    },
+    {
+      src: HOTEL_IMAGES.lawnBuildingDay,
+      alt: 'Expansive manicured green lawn overlooking Hotel Ghunghat resort wing',
+      label: 'Main Lawn'
+    },
+    {
+      src: HOTEL_IMAGES.gardenDay,
+      alt: 'Lush landscaped garden lawn with stone courtyard wall and palm trees',
+      label: 'Garden Area'
+    },
+    {
+      src: HOTEL_IMAGES.partyLawn,
+      alt: 'Sprawling open-air wedding party lawn with festive lighting at Hotel Ghunghat Gandhinagar',
+      label: 'Evening Decor'
+    }
+  ];
 
   const lawnFeatures = [
     {
@@ -56,16 +80,51 @@ export const PartyLawn: React.FC<PartyLawnProps> = ({ onOpenEventEnquiry }) => {
         {/* 2-Column Lawn Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Party Lawn Visual Asset with 3D Depth */}
+          {/* Left Column: Party Lawn Visual Asset with 3D Depth + Outdoor/Garden Thumbnails */}
           <div className="lg:col-span-6 relative">
             <ScrollReveal direction="left" delay={150}>
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#C5A880]/30 group">
-                <Parallax3DImage
-                  src={HOTEL_IMAGES.partyLawn}
-                  alt="Sprawling open-air wedding party lawn with festive lighting at Hotel Ghunghat Gandhinagar"
-                  containerClassName="h-[400px] sm:h-[480px]"
-                  className="h-full"
-                />
+              <div className="space-y-4">
+                <div
+                  className="rounded-2xl overflow-hidden shadow-2xl border border-[#C5A880]/30 group relative animate-float-card-deep"
+                  style={{ animationDelay: '1.15s' }}
+                >
+                  <Parallax3DImage
+                    key={lawnGallery[selectedLawnIdx].src}
+                    src={lawnGallery[selectedLawnIdx].src}
+                    alt={lawnGallery[selectedLawnIdx].alt}
+                    containerClassName="h-[340px] sm:h-[420px]"
+                    className="h-full"
+                  />
+                </div>
+
+                {/* Responsive Garden & Lawn Thumbnail Strip */}
+                <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
+                  {lawnGallery.map((item, idx) => (
+                    <button
+                      key={item.src}
+                      type="button"
+                      onClick={() => setSelectedLawnIdx(idx)}
+                      aria-label={`View ${item.label}`}
+                      className={`group/thumb relative rounded-xl overflow-hidden aspect-[4/3] border transition-all duration-300 cursor-pointer ${
+                        idx === selectedLawnIdx
+                          ? 'border-[#E6CA65] ring-2 ring-[#E6CA65]/40 shadow-lg scale-[1.02]'
+                          : 'border-white/15 opacity-75 hover:opacity-100 hover:border-[#C5A880]/50'
+                      }`}
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                      <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] sm:text-[11px] font-medium text-white truncate text-left">
+                        {item.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </ScrollReveal>
           </div>
